@@ -66,13 +66,11 @@ st.title("Radiology Data Query System")
 st.markdown("""
     <style>
         .logo {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 150px;  /* Adjust the width as needed */
-        }
-        .streamlit-expanderHeader {
-            padding-top: 0;
+            z-index: 9999; /* Ensure the logo is on top */
         }
     </style>
     <img src="logo.png" class="logo">
