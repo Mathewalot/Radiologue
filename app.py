@@ -5,6 +5,7 @@ from langchain.prompts import PromptTemplate
 import pandas as pd
 import time
 
+st.logo(logo.png')
 # Load the text data
 file_path = 'radiologue.csv'
 text_data = pd.read_csv(file_path)
