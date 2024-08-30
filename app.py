@@ -10,7 +10,7 @@ file_path = 'radiologue.csv'
 text_data = pd.read_csv(file_path)
 
 # Initialize the OpenAI model
-api_key = st.secrets["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"]
+api_key = st.secrets["OPENAI_API_KEY"]
 llm = OpenAI(api_key=api_key)
 
 # Define the prompt template for health statistics data
@@ -31,7 +31,7 @@ chain = LLMChain(llm=llm, prompt=prompt_template)
 
 # Function to generate data description for the health statistics
 def generate_data_description():
-    sample_entries = text_data.sample(min(len(text_data), 5)) # Get up to 5 random rows
+    sample_entries = text_data.sample(min(len(text_data), 5))  # Get up to 5 random rows
     description = "The dataset contains various health statistics over different years. It includes data points such as Infant Mortality Rate, Life Expectancy, Maternal Mortality Rate, Prevalence of Diabetes, and Prevalence of Hypertension. The data is structured with the following columns:\n"
     description += "- Keyword: A list of radiology.\n"
     description += "- Response: The definition or meaning of all the keywords\n\n"
@@ -49,11 +49,11 @@ def get_response(question):
         except Exception as e:
             error_message = str(e)
             if 'Rate limit' in error_message or 'quota' in error_message:
-                wait_time = 2 ** attempt # Exponential backoff
+                wait_time = 2 ** attempt  # Exponential backoff
                 st.write(f"Rate limit exceeded: {error_message}. Waiting for {wait_time} seconds before retrying...")
                 time.sleep(wait_time)
                 attempt += 1
-                if attempt > 5: # Limit the number of retries
+                if attempt > 5:  # Limit the number of retries
                     st.write("Exceeded maximum retry attempts.")
                     break
             else:
