@@ -10,7 +10,7 @@ file_path = 'radiologue.csv'
 text_data = pd.read_csv(file_path)
 
 # Initialize the OpenAI model
-api_key = st.secrets('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')
+api_key = st.secrets["OPENAI_API_KEY"]
 llm = OpenAI(api_key=api_key)
 
 # Define the prompt template for health statistics data
