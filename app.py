@@ -63,7 +63,7 @@ def get_response(question):
 
 # Streamlit UI
 st.title("Radiology Data Query System")
-st.logo('logo.png')
+st.image('logo.png', width=300)
 # Input for the user question
 user_question = st.text_input("Please enter your question:")
 
