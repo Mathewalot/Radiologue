@@ -63,19 +63,7 @@ def get_response(question):
 
 # Streamlit UI
 st.title("Radiology Data Query System")
-st.markdown("""
-    <style>
-        .logo {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 150px;  /* Adjust the width as needed */
-            z-index: 9999; /* Ensure the logo is on top */
-        }
-    </style>
-    <img src="logo.png" class="logo">
-""", unsafe_allow_html=True)
-
+st.logo('logo.png', width=300)
 # Input for the user question
 user_question = st.text_input("Please enter your question:")
 
